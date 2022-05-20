@@ -102,3 +102,4 @@ This is to hold the documentation for my own personal code challenge for differe
 * Swagger Documentation
 * should be able to be Dockerized, can be used for K8S or mini-kube
 * Include testing, both unit and integration test (> 80%)
+* Detailed documentation on how to setup and boot the repository
