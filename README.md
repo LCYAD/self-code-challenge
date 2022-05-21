@@ -98,8 +98,8 @@ This is to hold the documentation for my own personal code challenge for differe
 
 ### Things should be included
 * JWT Authorized authorization
-* JSON validation
-* Swagger Documentation
+* Swagger Documentation (422 error is invalid)
 * should be able to be Dockerized, can be used for K8S or mini-kube
 * Include testing, both unit and integration test (> 80%)
 * Detailed documentation on how to setup and boot the repository
+* Detail Logging and Trace and Metrics via Open Telemetry or other implementation
