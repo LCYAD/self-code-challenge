@@ -5,42 +5,11 @@ This is to hold the documentation for my own personal code challenge for differe
 ## Backend API Challenge
 
 ### The Task
-* make 2 endpoints that allow getting and setting a quotation in the redis
-* The request JSON should look like the following:
+* make 2 endpoints that allow getting and setting quotations in the redis
+* The setting quotation endpoint should be able to take in multiple quotations
 
-```json
-{
-    "scheduleAt": "2021-09-10T03:40:51.000Z",
-    "deliveryBy": "2021-09-11T03:40:51.000Z",
-    "stops": [
-    {
-        "coordinates": {
-            "lat": "22.3353139",
-            "lng": "114.1758402"
-        },
-        "address": "999 Prince Edward Road"
-    },
-    {
-        "coordinates": {
-            "lat": "22.3353139",
-            "lng": "114.1758402"
-        },
-        "address": "InnoCentre, 72 Tat Chee Avenue"
-    }
-    ],
-    "location": "Hong Kong",
-    "item": {
-        "quantity": 1,
-        "weight": 3,
-        "categories": [
-            "GLASS"
-        ],
-        "handlingInstructions": [
-            "FRAGILE"
-        ]
-    }
-}
-```
+
+### Get Quotation By Id
 
 * The response JSON should look like the following:
 
@@ -79,14 +48,6 @@ This is to hold the documentation for my own personal code challenge for differe
     }
 }
 ```
-* The endpoint requires a JWT validation to be used, if not provided throw error
-```json
-{
-    "code": "10000",
-    "message": "UNAUTHORIZED",
-    "detail": "You are not authorized to access this endpoint"
-}
-```
 * the error if quotation not found are
 ```json
 {
@@ -95,10 +56,110 @@ This is to hold the documentation for my own personal code challenge for differe
     "detail": "Quotation not found"
 }
 ```
+### Create Quotations
+
+* should handle cases where body is empty with validation error
+* The request JSON should look like the following:
+
+```json
+[
+    {
+        "scheduleAt": "2021-09-10T03:40:51.000Z",
+        "deliveryBy": "2021-09-11T03:40:51.000Z",
+        "stops": [
+        {
+            "coordinates": {
+                "lat": "22.3353139",
+                "lng": "114.1758402"
+            },
+            "address": "999 Prince Edward Road"
+        },
+        {
+            "coordinates": {
+                "lat": "22.3353139",
+                "lng": "114.1758402"
+            },
+            "address": "InnoCentre, 72 Tat Chee Avenue"
+        }
+        ],
+        "location": "Hong Kong",
+        "item": {
+            "quantity": 1,
+            "weight": 3,
+            "categories": [
+                "GLASS"
+            ],
+            "handlingInstructions": [
+                "FRAGILE"
+            ]
+        }
+    }
+]
+```
+
+* The response JSON should look like the following:
+
+```json
+[
+    {
+        "quotationId": "182379172831",
+        "expireAt": "2021-09-10T03:40:51.000Z",
+        "scheduleAt": "2021-09-10T03:40:51.000Z",
+        "deliveryBy": "2021-09-11T03:40:51.000Z",
+        "stops": [
+        {
+            "coordinates": {
+                "lat": "22.3353139",
+                "lng": "114.1758402"
+            },
+            "address": "999 Prince Edward Road"
+        },
+        {
+            "coordinates": {
+                "lat": "22.3353139",
+                "lng": "114.1758402"
+            },
+            "address": "InnoCentre, 72 Tat Chee Avenue"
+        }
+        ],
+        "location": "Hong Kong",
+        "item": {
+            "quantity": 1,
+            "weight": 3,
+            "categories": [
+                "GLASS"
+            ],
+            "handlingInstructions": [
+                "FRAGILE"
+            ]
+        }
+    }
+]
+```
+
+### Errors
+* The endpoint requires a JWT validation to be used, if not provided throw error
+```json
+{
+    "code": "10000",
+    "message": "UNAUTHORIZED",
+    "detail": "You are not authorized to access this endpoint"
+}
+```
+* Validation Error (HTTP error `422`s) should be like follows
+
+```json
+{
+    "code": "10002",
+    "message": "VALIDATION_ERROR",
+    "detail": "<details here>"
+}
+```
+
 
 ### Things should be included
 * JWT Authorized authorization
-* Swagger Documentation (422 error is invalid)
+* Swagger Documentation
 * should be able to be Dockerized, can be used for K8S or mini-kube
 * Include testing, both unit and integration test (> 80%)
 * Detailed documentation on how to setup and boot the repository
