@@ -96,7 +96,11 @@ This is to hold the documentation for my own personal code challenge for differe
     }
 ]
 ```
-
+* Notes on fields
+    * `quotationId` is a unique Id made of 12 digits
+    * `coordinates` can be optional but if available then `lat`, `lng` must be available and match the relevant string format
+    * `categories` and `handlingInstructions` fields are required but can be empty
+    * All date time related input need to match the relevant standard on date time string
 * The response JSON should look like the following:
 
 ```json
@@ -164,3 +168,4 @@ This is to hold the documentation for my own personal code challenge for differe
 * Include testing, both unit and integration test (> 80%)
 * Detailed documentation on how to setup and boot the repository
 * Detail Logging and Trace and Metrics via Open Telemetry or other implementation
+* Instructions on how to easily setup debugging
