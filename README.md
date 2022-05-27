@@ -51,8 +51,8 @@ This is to hold the documentation for my own personal code challenge for differe
 * the error if quotation not found are
 ```json
 {
-    "code": "10001",
-    "message": "NOT_FOUND",
+    "code": "10004",
+    "message": "RESOURCES_NOT_FOUND",
     "detail": "Quotation not found"
 }
 ```
@@ -101,6 +101,7 @@ This is to hold the documentation for my own personal code challenge for differe
     * `coordinates` can be optional but if available then `lat`, `lng` must be available and match the relevant string format
     * `categories` and `handlingInstructions` fields are required but can be empty
     * All date time related input need to match the relevant standard on date time string
+    * `scheduleAt` should always be before `deliveryBy`
 * The response JSON should look like the following:
 
 ```json
@@ -145,18 +146,27 @@ This is to hold the documentation for my own personal code challenge for differe
 * The endpoint requires a JWT validation to be used, if not provided throw error
 ```json
 {
-    "code": "10000",
+    "code": "10002",
     "message": "UNAUTHORIZED",
     "detail": "You are not authorized to access this endpoint"
 }
 ```
-* Validation Error (HTTP error `422`s) should be like follows
+* Validation Error (HTTP error `422`) should be like follows
 
 ```json
 {
-    "code": "10002",
+    "code": "10003",
     "message": "VALIDATION_ERROR",
     "detail": "<details here>"
+}
+```
+
+* API Route Not Found should look like
+```json
+{
+    "type": "API_ROUTE_NOT_FOUND",
+    "code": "10001",
+    "detail": "Request API route does not exist"
 }
 ```
 
