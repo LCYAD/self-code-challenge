@@ -98,7 +98,7 @@ This is to hold the documentation for my own personal code challenge for differe
 ```
 * Notes on fields
     * `quotationId` is a unique Id made of 12 digits
-    * `coordinates` can be optional but if available then `lat`, `lng` must be available and match the relevant string format
+    * `coordinates` can be optional but if available then `lat`, `lng` must be available and match the relevant string format.  Regex format can refer to [here](https://stackoverflow.com/questions/3518504/regular-expression-for-matching-latitude-longitude-coordinates)
     * `categories` and `handlingInstructions` fields are required but can be empty
     * All date time related input need to match the relevant standard on date time string
     * `scheduleAt` should always be before `deliveryBy`
