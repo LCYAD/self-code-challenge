@@ -172,7 +172,6 @@ This is to hold the documentation for my own personal code challenge for differe
 
 
 ### Things should be included
-* JWT Authorized authorization
 * Swagger Documentation
 * should be able to be Dockerized, can be used for K8S or mini-kube
 * Include testing, both unit and integration test (> 80%)
